@@ -1,0 +1,15 @@
+torch>=2.3
+torchvision>=0.18
+compressai>=1.2.6
+numpy>=1.26
+pillow>=10
+decord>=0.6.0
+einops>=0.8
+scipy>=1.12
+pytorch-msssim>=1.0.0
+lpips>=0.1.4
+tqdm>=4.66
+pyyaml>=6.0
+matplotlib>=3.8
+constriction>=0.3.5   # rANS/range coder (Python+Rust)
+ffmpeg-python>=0.2.0

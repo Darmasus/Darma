@@ -1,0 +1,56 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  # Linux gets the full install incl. compressai; it's the canonical CI env.
+  linux:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.10", "3.11"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: System deps (ffmpeg + libvmaf)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
+      - name: Install (CPU torch + compressai)
+        run: python scripts/install.py
+      - name: Smoke tests
+        run: |
+          python -m pytest tests/ -v
+
+  # Windows CI: MSVC is preinstalled on windows-latest runners so compressai
+  # can actually build. We still allow the compressai step to fail and run
+  # the subset of tests that don't require it.
+  windows:
+    runs-on: windows-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.10", "3.11"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install (CPU torch + compressai best-effort)
+        shell: pwsh
+        continue-on-error: true
+        run: python scripts/install.py
+      - name: Fallback install without compressai
+        if: failure()
+        shell: pwsh
+        run: python scripts/install.py --skip-compressai
+      - name: Tests that don't need compressai
+        shell: pwsh
+        run: |
+          python -m pytest tests/test_pup_roundtrip.py -v

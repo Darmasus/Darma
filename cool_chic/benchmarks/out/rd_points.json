@@ -1,0 +1,15 @@
+[
+  {"codec": "inr",  "label": "tiny",    "bytes":  58301, "bpp": 0.4745, "psnr": 22.88, "seconds":  78.0},
+  {"codec": "inr",  "label": "small",   "bytes": 134039, "bpp": 1.0908, "psnr": 23.92, "seconds":  95.9},
+  {"codec": "inr",  "label": "medium",  "bytes": 298084, "bpp": 2.4258, "psnr": 24.59, "seconds": 113.6},
+  {"codec": "x265", "label": "100k",    "bytes":  13539, "bpp": 0.1102, "psnr": 29.29, "seconds":   0.1},
+  {"codec": "x265", "label": "250k",    "bytes":  28102, "bpp": 0.2287, "psnr": 37.17, "seconds":   0.1},
+  {"codec": "x265", "label": "500k",    "bytes":  44980, "bpp": 0.3660, "psnr": 43.52, "seconds":   0.2},
+  {"codec": "x265", "label": "1000k",   "bytes":  69623, "bpp": 0.5666, "psnr": 48.56, "seconds":   0.2},
+  {"codec": "x265", "label": "2000k",   "bytes": 103799, "bpp": 0.8447, "psnr": 51.26, "seconds":   0.2},
+  {"codec": "av1",  "label": "100k",    "bytes":  13975, "bpp": 0.1137, "psnr": 35.67, "seconds":   0.4},
+  {"codec": "av1",  "label": "250k",    "bytes":  25061, "bpp": 0.2039, "psnr": 42.49, "seconds":   0.4},
+  {"codec": "av1",  "label": "500k",    "bytes":  34286, "bpp": 0.2790, "psnr": 45.75, "seconds":   0.5},
+  {"codec": "av1",  "label": "1000k",   "bytes":  45789, "bpp": 0.3726, "psnr": 48.46, "seconds":   0.5},
+  {"codec": "av1",  "label": "2000k",   "bytes":  58827, "bpp": 0.4787, "psnr": 50.35, "seconds":   0.6}
+]
